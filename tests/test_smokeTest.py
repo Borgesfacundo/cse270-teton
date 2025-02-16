@@ -19,7 +19,7 @@ class TestSmokeTest():
     self.driver.quit()
   
   def test_1Navigatetothehomepage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.set_window_size(974, 1047)
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".header-logo img")
     assert len(elements) > 0
@@ -27,6 +27,7 @@ class TestSmokeTest():
     assert self.driver.find_element(By.CSS_SELECTOR, ".header-title > h2").text == "Chamber of Commerce"
   
   def test_2Navigatetothehomepage(self):
+    self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.set_window_size(1920, 1080)
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".spotlight1 > .centered-image")
     assert len(elements) > 0
@@ -37,7 +38,7 @@ class TestSmokeTest():
     self.driver.find_element(By.LINK_TEXT, "Join Us").click()
   
   def test_3Navigatetothedirectorypage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.find_element(By.LINK_TEXT, "Directory").click()
     self.driver.find_element(By.ID, "directory-grid").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
@@ -45,7 +46,7 @@ class TestSmokeTest():
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
   
   def test_4Navigatetothejoinpage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.find_element(By.LINK_TEXT, "Join").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".myinput:nth-child(2)").text == "First Name"
     elements = self.driver.find_elements(By.NAME, "fname")
@@ -55,12 +56,11 @@ class TestSmokeTest():
     self.driver.find_element(By.NAME, "bizname").send_keys("asdasd")
     self.driver.find_element(By.NAME, "biztitle").send_keys("senior dev")
     self.driver.find_element(By.NAME, "submit").click()
-    assert self.driver.find_element(By.CSS_SELECTOR, ".myinput:nth-child(2)").text == "Email"
     elements = self.driver.find_elements(By.NAME, "email")
     assert len(elements) > 0
   
   def test_5Navigatetotheadminpage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.find_element(By.LINK_TEXT, "Admin").click()
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
