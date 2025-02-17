@@ -38,6 +38,7 @@ class TestSmokeTest():
     self.driver.find_element(By.LINK_TEXT, "Join Us").click()
   
   def test_3Navigatetothedirectorypage(self):
+    self.driver.set_window_size(1920, 1080)
     self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
     self.driver.find_element(By.LINK_TEXT, "Directory").click()
     self.driver.find_element(By.ID, "directory-grid").click()
@@ -70,5 +71,5 @@ class TestSmokeTest():
     self.driver.find_element(By.ID, "username").send_keys("facuborges")
     self.driver.find_element(By.ID, "password").send_keys("Facundo123")
     self.driver.find_element(By.CSS_SELECTOR, ".mysubmit:nth-child(4)").click()
-    assert self.driver.find_element(By.CSS_SELECTOR, ".errorMessage").text == "Invalid username and password."
+    WebDriverWait(self.driver, 30).until(expected_conditions.text_to_be_present_in_element((By.CSS_SELECTOR, ".errorMessage"), "Invalid username and password."))
   
