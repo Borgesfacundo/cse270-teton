@@ -47,6 +47,7 @@ class TestSmokeTest():
   
   def test_4Navigatetothejoinpage(self):
     self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
+    self.driver.set_window_size(1920, 1080)
     self.driver.find_element(By.LINK_TEXT, "Join").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".myinput:nth-child(2)").text == "First Name"
     elements = self.driver.find_elements(By.NAME, "fname")
@@ -58,9 +59,11 @@ class TestSmokeTest():
     self.driver.find_element(By.NAME, "submit").click()
     elements = self.driver.find_elements(By.NAME, "email")
     assert len(elements) > 0
+    self.driver.close()
   
   def test_5Navigatetotheadminpage(self):
     self.driver.get("https://borgesfacundo.github.io/cse270-teton/")
+    self.driver.set_window_size(1920, 1080)
     self.driver.find_element(By.LINK_TEXT, "Admin").click()
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
